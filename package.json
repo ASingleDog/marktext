@@ -3,7 +3,7 @@
   "version": "0.18.6",
   "description": "MarkText",
   "main": "./out/main/index.js",
-  "author": "Marktext Contributors (钓乌龟的大攻稽 fork)",
+  "author": "Marktext Contributors",
   "homepage": "https://github.com/Tkaixiang/marktext",
   "scripts": {
     "format": "prettier --write .",
