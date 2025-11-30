@@ -205,7 +205,7 @@ class ExportHtml {
    * @param {*} options Document options
    */
   async generate(options) {
-    const { printOptimization } = options
+    const { printOptimization, baseUrl } = options
 
     // WORKAROUND: Hide Prism.js style when exporting or printing. Otherwise the background color is white in the dark theme.
     const highlightCssStyle = printOptimization ? `@media print { ${highlightCss} }` : highlightCss
@@ -220,6 +220,7 @@ class ExportHtml {
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  ${baseUrl ? `<base href="${baseUrl}">` : ''}
   <title>${sanitize(title, EXPORT_DOMPURIFY_CONFIG, true)}</title>
   <style>
   ${githubMarkdownCss}

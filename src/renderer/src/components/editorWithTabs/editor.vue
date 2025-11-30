@@ -776,6 +776,12 @@ const handleExport = async (options) => {
           isLandscape
         }
 
+        let baseUrl = ''
+        if (currentFile.value && currentFile.value.pathname) {
+          const dir = window.path.dirname(currentFile.value.pathname)
+          baseUrl = `file://${dir}/`.replace(/\\/g, '/')
+        }
+
         const html = await editor.value.exportStyledHTML({
           title: '',
           printOptimization: true,
@@ -783,7 +789,8 @@ const handleExport = async (options) => {
           toc: htmlToc,
           header,
           footer,
-          headerFooterStyled
+          headerFooterStyled,
+          baseUrl
         })
         printer.renderMarkdown(html)
         editorStore.EXPORT({ type, pageOptions })

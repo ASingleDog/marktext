@@ -1,9 +1,9 @@
 {
   "name": "marktext",
-  "version": "0.18.5",
+  "version": "0.18.6",
   "description": "MarkText",
   "main": "./out/main/index.js",
-  "author": "Marktext Contributors (Tkaixiang fork)",
+  "author": "Marktext Contributors (钓乌龟的大攻稽 fork)",
   "homepage": "https://github.com/Tkaixiang/marktext",
   "scripts": {
     "format": "prettier --write .",
@@ -13,10 +13,10 @@
     "rebuild-native": "npx @electron/rebuild -f",
     "dev": "electron-vite dev",
     "build": "electron-vite build",
-    "build:unpack": "npm run minify-locales && npm run build && electron-builder --dir",
-    "build:win": "npm run minify-locales && npx @electron/rebuild && npm run build && electron-builder --win --publish never",
-    "build:mac": "npm run minify-locales && npx @electron/rebuild && npm run build && electron-builder --mac --publish never",
-    "build:linux": "npm run minify-locales && npx @electron/rebuild && npm run build && electron-builder --linux --publish never"
+    "build:unpack": "CXXFLAGS=\"-std=c++20\" npm run minify-locales && npm run build && electron-builder --dir",
+    "build:win": "CXXFLAGS=\"-std=c++20\" npm run minify-locales && npx @electron/rebuild && npm run build && electron-builder --win --publish never",
+    "build:mac": "CXXFLAGS=\"-std=c++20\" npm run minify-locales && npx @electron/rebuild && npm run build && electron-builder --mac --publish never",
+    "build:linux": "CXXFLAGS=\"-std=c++20\" npm run minify-locales && npx @electron/rebuild && npm run build && electron-builder --linux --publish never"
   },
   "dependencies": {
     "@electron-toolkit/preload": "^3.0.2",
