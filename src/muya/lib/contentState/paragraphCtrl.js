@@ -23,6 +23,16 @@ const paragraphCtrl = (ContentState) => {
     const cursorCoords = selection.getCursorCoords()
     const startBlock = this.getBlock(start.key)
     const endBlock = this.getBlock(end.key)
+
+    if (!startBlock || !endBlock) {
+      return {
+        start,
+        end,
+        affiliation: [],
+        cursorCoords
+      }
+    }
+
     const startParents = this.getParents(startBlock)
     const endParents = this.getParents(endBlock)
     const affiliation = startParents
