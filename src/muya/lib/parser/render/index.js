@@ -196,7 +196,7 @@ class StateRender {
   partialRender(blocks, activeBlocks, matches, startKey, endKey) {
     const cursorOutMostBlock = activeBlocks[activeBlocks.length - 1]
     // If cursor is not in render blocks, need to render cursor block independently
-    const needRenderCursorBlock = blocks.indexOf(cursorOutMostBlock) === -1
+    const needRenderCursorBlock = cursorOutMostBlock && blocks.indexOf(cursorOutMostBlock) === -1
     const t = this.muya.options.t || ((key) => key) // 获取翻译函数，如果没有则返回原始键值
     const newVnode = h(
       'section',
