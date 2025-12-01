@@ -216,6 +216,10 @@ class ContentState {
     const startOutMostBlock = this.findOutMostBlock(startBlock)
     const endOutMostBlock = this.findOutMostBlock(endBlock)
 
+    if (!startOutMostBlock || !endOutMostBlock) {
+      return
+    }
+
     this.renderRange = [startOutMostBlock.preSibling, endOutMostBlock.nextSibling]
   }
 
@@ -612,6 +616,7 @@ class ContentState {
   }
 
   findOutMostBlock(block) {
+    if (!block) return null
     const parent = this.getBlock(block.parent)
     return parent ? this.findOutMostBlock(parent) : block
   }
