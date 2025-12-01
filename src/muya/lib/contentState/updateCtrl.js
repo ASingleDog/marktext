@@ -83,6 +83,11 @@ const updateCtrl = ContentState => {
       line = block
       block = this.getParent(block)
     }
+
+    if (!block) {
+      return false
+    }
+
     const listItem = this.getParent(block)
     const [
       match, bullet, tasklist, order, atxHeader,
@@ -592,6 +597,9 @@ const updateCtrl = ContentState => {
   }
 
   ContentState.prototype.updateToParagraph = function (block, line) {
+    if (!block) {
+      return null
+    }
     if (/^h\d$/.test(block.type) && block.headingStyle === 'setext') {
       return null
     }

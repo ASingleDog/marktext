@@ -22,8 +22,8 @@ export default function displayMath (h, cursor, block, token, outerClass) {
 
   const { loadMathMap } = this
 
-  const displayMode = false
-  const key = `${math}_${type}`
+  const displayMode = token.marker === '$$'
+  const key = `${math}_${type}_${displayMode}`
   let mathVnode = null
   let previewSelector = `span.${CLASS_OR_ID.AG_MATH_RENDER}`
   if (loadMathMap.has(key)) {
